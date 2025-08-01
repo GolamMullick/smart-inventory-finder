@@ -1,0 +1,77 @@
+[
+    {
+        "id": "api-status-in",
+        "type": "inject",
+        "z": "main",
+        "name": "Check Stock Status",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [["get-api-status"]]
+    },
+    {
+        "id": "get-api-status",
+        "type": "http request",
+        "z": "main",
+        "name": "GET /status",
+        "method": "GET",
+        "ret": "obj",
+        "url": "http://localhost:8000/status",
+        "x": 360,
+        "y": 100,
+        "wires": [["check-low-stock"]]
+    },
+    {
+        "id": "check-low-stock",
+        "type": "function",
+        "z": "main",
+        "name": "Low Stock?",
+        "func": "if (msg.payload.low_stock) {\n    msg.payload = {\"status\": 1}; // 1 = Low\n} else {\n    msg.payload = {\"status\": 0}; // 0 = OK\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 100,
+        "wires": [["stock-indicator"]]
+    },
+    {
+        "id": "stock-indicator",
+        "type": "ui_led",
+        "z": "main",
+        "group": "ui_group",
+        "order": 1,
+        "label": "Low Stock Alert",
+        "name": "",
+        "colorForValue": [
+            {"value": "0", "color": "green"},
+            {"value": "1", "color": "red"}
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "x": 740,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ui_group",
+        "type": "ui_group",
+        "name": "Inventory Alerts",
+        "tab": "ui_tab",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_tab",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1
+    }
+]

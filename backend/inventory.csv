@@ -1,0 +1,5 @@
+id,name,description,stock
+1,Camera Module,Raspberry Pi camera module,12
+2,Temperature Sensor,DS18B20 waterproof sensor,3
+3,Micro SD Card,32GB microSD card for Pi,25
+4,GPIO Extension Board,Expansion for Raspberry Pi,2
