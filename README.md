@@ -1,13 +1,13 @@
-# Smart Inventory Finder 🚀
+# Smart Inventory Finder 
 AI-powered search, real-time stock status, and Node-RED IoT alert simulation.
 
 ## Overview
 A practical demo: Python FastAPI backend with semantic (AI) search and a Node-RED dashboard that simulates stock alerts. No hardware needed!
 
 ## Features
-- 🔎 Semantic Search: Find items by description (not just keywords!)
-- 📊 Live Status: See if any inventory is low
-- 🟢 Node-RED dashboard: Visualizes alerts with a simulated LED indicator
+- Semantic Search: Find items by description (not just keywords!)
+- Live Status: See if any inventory is low
+- Node-RED dashboard: Visualizes alerts with a simulated LED indicator
 
 ## Backend Usage
 - Start backend:
